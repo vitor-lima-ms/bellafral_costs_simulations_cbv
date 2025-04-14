@@ -78,6 +78,24 @@ def download_simulation(request, pk):
 
     csv_writer.writerow(
         [
+            'TNT - Filtrante - 162mm (m2)',
+            simulation.fraldaObj.qtdTnt162,
+            simulation.custoObj.custoTnt162,
+            round(simulation.fraldaObj.qtdTnt162 * simulation.custoObj.custoTnt162, 4),
+        ]
+    )
+
+    csv_writer.writerow(
+        [
+            'TNT - Filtrante - 750mm (m2)',
+            simulation.fraldaObj.qtdTnt750,
+            simulation.custoObj.custoTnt750,
+            round(simulation.fraldaObj.qtdTnt750 * simulation.custoObj.custoTnt750, 4),
+        ]
+    )
+    
+    csv_writer.writerow(
+        [
             'TNT - Filtrante - 780mm (m2)',
             simulation.fraldaObj.qtdTnt780,
             simulation.custoObj.custoTnt780,
@@ -109,6 +127,24 @@ def download_simulation(request, pk):
             simulation.fraldaObj.qtdBarreira,
             simulation.custoObj.custoBarreira,
             round(simulation.fraldaObj.qtdBarreira * simulation.custoObj.custoBarreira, 4),
+        ]
+    )
+
+    csv_writer.writerow(
+        [
+            'Polietileno - Filme - 162mm (m2)',
+            simulation.fraldaObj.qtdPolietileno162,
+            simulation.custoObj.custoPolietileno162,
+            round(simulation.fraldaObj.qtdPolietileno162 * simulation.custoObj.custoPolietileno162, 4),
+        ]
+    )
+
+    csv_writer.writerow(
+        [
+            'Polietileno - Filme - 750mm (m2)',
+            simulation.fraldaObj.qtdPolietileno750,
+            simulation.custoObj.custoPolietileno750,
+            round(simulation.fraldaObj.qtdPolietileno750 * simulation.custoObj.custoPolietileno750, 4),
         ]
     )
 
