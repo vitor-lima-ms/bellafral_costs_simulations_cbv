@@ -10,7 +10,7 @@
 {% block content %}
     <div class="container">
         {% for fralda in fraldas %}
-            <h2>{{ fralda.identificador }}</h2>
+            <h2>{{ fralda.modelo }} - {{ fralda.tamanho }}</h2>
             <button type="button" class="btn btn-danger"><a href="{% url 'fralda:delete_fralda' fralda.pk %}">Deletar</a></button>
             <button type="button" class="btn btn-dark"><a href="{% url 'fralda:update_fralda' fralda.pk %}">Atualizar</a></button>
             <button type="button" class="btn btn-secondary"><a href="{% url 'fralda:detail_fralda' fralda.pk %}">Detalhes</a></button>
