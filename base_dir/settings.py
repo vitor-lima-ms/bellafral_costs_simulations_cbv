@@ -30,6 +30,7 @@ SECRET_KEY = 'django-insecure-&3gg9-zi)8bz)r)kwm(i0f7f*mzf47k8lf7=(^7ahpvb^p-_yn
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'bellafralcustos.com',
     'https://bellafralcustos.com',
 ]
