@@ -1,0 +1,19 @@
+{% extends "list_simulacoes.html" %}
+
+{% block title %}Listagem de custos{% endblock title %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'list_custos.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        {% for custo in custos %}
+            <h2>{{ custo.identificador }}</h2>
+            <button type="button" class="btn btn-danger"><a href="{% url 'custo:delete_custo' custo.pk %}">Deletar</a></button>
+            <button type="button" class="btn btn-dark"><a href="{% url 'custo:update_custo' custo.pk %}">Atualizar</a></button>
+            <button type="button" class="btn btn-secondary"><a href="{% url 'custo:detail_custo' custo.pk %}">Detalhes</a></button>
+        {% endfor %}
+    </div>
+{% endblock content %}

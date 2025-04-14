@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    {% block css %}
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'list_simulacoes.css' %}">
+    {% endblock css %}
+    <title>Bellafral | {% block title %}Simulações{% endblock title %}</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <b><a class="navbar-brand" href="{% url "simulacao:index" %}">Sistema de Simulação de Custos</a></b>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Custos
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'custo:create_custo' %}">Criar custo</a></li>
+                  <li><a class="dropdown-item" href="{% url 'custo:list_custos' %}">Listar custos</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Fraldas
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url "fralda:create_fralda" %}">Criar fralda</a></li>
+                  <li><a class="dropdown-item" href="{% url "fralda:list_fraldas" %}">Listar fraldas</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url "simulacao:create_simulacao" %}">Criar simulação</a>
+              </li>
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url "user_auth:logout_user" %}">Logout</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url "user_auth:register_user" %}">Registrar usuário</a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    {% block content %}
+        {% if messages %}
+            {% for message in messages %}
+                <section id="success_message">
+                    <div class="alert alert-dark" role="alert">
+                        {{ message }}
+                    </div>
+                </section>
+            {% endfor %}
+        {% endif %}
+        {% if simulacoes|length == 0 %}
+            <div class="container">
+                <h3><b>Não há simulações cadastradas!</b></h3>
+            </div>
+        {% else %}
+            {% for simulacao in simulacoes %}
+                <div class="container">
+                    <h3><b>{{ simulacao.fraldaObj.modelo }} - {{ simulacao.custoObj.identificador }}</b></h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantidade</th>
+                        <th>Custo unitário</th>
+                        <th>Custo unitário total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Celulose virgem (Kg)</td>
+                        <td>{{ simulacao.fraldaObj.qtdCeluloseVirgem }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoCeluloseVirgem }}</td>
+                        <td>R$ {{ simulacao.celuloseVirgemCUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>Gel (Kg)</td>
+                        <td>{{ simulacao.fraldaObj.qtdGel }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoGel }}</td>
+                        <td>R$ {{ simulacao.gelCUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>TNT 750 (m2)</td>
+                        <td>{{ simulacao.fraldaObj.qtdTnt750 }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoTnt750 }}</td>
+                        <td>R$ {{ simulacao.tnt750CUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>TNT 780 (m2)</td>
+                        <td>{{ simulacao.fraldaObj.qtdTnt780 }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoTnt780 }}</td>
+                        <td>R$ {{ simulacao.tnt780CUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>Fita adesiva (Kg)</td>
+                        <td>{{ simulacao.fraldaObj.qtdFitaAdesiva }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoFitaAdesiva }}</td>
+                        <td>R$ {{ simulacao.fitaAdesivaCUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>Elastico (Kg)</td>
+                        <td>{{ simulacao.fraldaObj.qtdElastico }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoElastico }}</td>
+                        <td>R$ {{ simulacao.elasticoCUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>Barreira (m2)</td>
+                        <td>{{ simulacao.fraldaObj.qtdBarreira }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoBarreira }}</td>
+                        <td>R$ {{ simulacao.barreiraCUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>Polietileno 750 (Kg)</td>
+                        <td>{{ simulacao.fraldaObj.qtdPolietileno750 }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoPolietileno750 }}</td>
+                        <td>R$ {{ simulacao.polietileno750CUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>Polietileno 780 (Kg)</td>
+                        <td>{{ simulacao.fraldaObj.qtdPolietileno780 }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoPolietileno780 }}</td>
+                        <td>R$ {{ simulacao.polietileno780CUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>Hot-Melt (Kg)</td>
+                        <td>{{ simulacao.fraldaObj.qtdHotMelt }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoHotMelt }}</td>
+                        <td>R$ {{ simulacao.hotMeltCUT }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Custo sem perdas (R$)</td>
+                        <td>{{ simulacao.fraldaCustoTotalSemPerdas }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Perdas (%)</td>
+                        <td>{{ simulacao.fraldaObj.percentPerdas }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Custo com perdas (R$)</td>
+                        <td>{{ simulacao.fraldaCustoTotalComPerdas }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Quantidade de fraldas por pacote</td>
+                        <td>{{ simulacao.fraldaObj.qtdPorPacote }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Embalagem (R$)</td>
+                        <td>{{ simulacao.fraldaObj.precoEmbalagem }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Saco para fardos/Encarte (R$)</td>
+                        <td>{{ simulacao.fraldaObj.precoFardoEncarte }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Custo do pacote (R$)</td>
+                        <td>{{ simulacao.fraldaCustoPacote }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Custo unitário final (R$)</td>
+                        <td>{{ simulacao.fraldaCUF }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Comissão (%)</td>
+                        <td>{{ simulacao.fraldaObj.percentComissao }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Impostos (%)</td>
+                        <td>{{ simulacao.fraldaObj.percentImpostos }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Frete (%)</td>
+                        <td>{{ simulacao.fraldaObj.percentFrete }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Margem de contribuição (%)</td>
+                        <td>{{ simulacao.fraldaObj.percentMargem }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">ST (%)</td>
+                        <td>{{ simulacao.fraldaObj.percentST }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Preço de venda (R$)</td>
+                        <td>{{ simulacao.precoVenda }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Preço de venda unitário (R$)</td>
+                        <td>{{ simulacao.precoVendaUnitario }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Preço de venda com ST (R$)</td>
+                        <td>{{ simulacao.precoVendaST }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Preço de venda unitário com ST (R$)</td>
+                        <td>{{ simulacao.precoVendaUnitarioST }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><button type="button" class="btn btn-dark"><a href="{% url 'fralda:update_fralda' simulacao.fraldaObj.pk %}">Editar</a></button></td>
+                        <td><button type="button" class="btn btn-danger"><a href="{% url 'simulacao:delete_simulacao' simulacao.pk %}">Deletar</a></button></td>
+                        <td><button type="button" class="btn btn-success"><a href="{% url 'simulacao:download_simulation' simulacao.pk %}">Download</a></button></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div> 
+            {% endfor %}
+        {% endif %}
+    {% endblock content %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>

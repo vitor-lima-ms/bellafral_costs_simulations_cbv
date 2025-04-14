@@ -1,0 +1,20 @@
+{% extends "list_simulacoes.html" %}
+
+{% block title %}Criar custo{% endblock title %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'create_custo.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <h2>Criar custo</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_table }}
+            <button type="submit" class="btn btn-dark">Salvar</button>
+        </form>
+    </div>
+{% endblock content %}
+

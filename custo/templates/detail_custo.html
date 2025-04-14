@@ -1,0 +1,68 @@
+{% extends "list_simulacoes.html" %}
+
+{% block title %}Detalhes do custo{% endblock title %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'detail_custo.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <h2>{{ custo.identificador }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Celulose virgem (R$)</td>
+                    <td>{{ custo.custoCeluloseVirgem }}</td>
+                </tr>
+                <tr>
+                    <td>Gel (R$)</td>
+                    <td>{{ custo.custoGel }}</td>
+                </tr>
+                <tr>
+                    <td>TNT 750 (R$)</td>
+                    <td>{{ custo.custoTnt750 }}</td>
+                </tr>
+                <tr>
+                    <td>TNT 780 (R$)</td>
+                    <td>{{ custo.custoTnt780 }}</td>
+                </tr>
+                <tr>
+                    <td>Fita adesiva (R$)</td>
+                    <td>{{ custo.custoFitaAdesiva }}</td>
+                </tr>
+                <tr>
+                    <td>Elastico (R$)</td>
+                    <td>{{ custo.custoElastico }}</td>
+                </tr>
+                <tr>
+                    <td>Barreira (R$)</td>
+                    <td>{{ custo.custoBarreira }}</td>
+                </tr>
+                <tr>
+                <tr>
+                    <td>Polietileno 750 (R$)</td>
+                    <td>{{ custo.custoPolietileno750 }}</td>
+                </tr>
+                <tr>
+                    <td>Polietileno 780 (R$)</td>
+                    <td>{{ custo.custoPolietileno780 }}</td>
+                </tr>
+                <tr>
+                    <td>Hot-Melt (R$)</td>
+                    <td>{{ custo.custoHotMelt }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="button" class="btn btn-danger"><a href="{% url 'custo:delete_custo' custo.pk %}">Deletar</a></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

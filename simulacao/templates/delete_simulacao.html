@@ -1,0 +1,19 @@
+{% extends "list_simulacoes.html" %}
+
+{% block title %}Deletar simulação{% endblock title %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'delete_simulacao.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <h2>Deletar simulação</h2>
+        <form action="" method="post">
+            {% csrf_token %}
+            <p>Tem certeza que deseja deletar a simulação?</p>
+            <button type="submit" class="btn btn-danger">Deletar</button>
+        </form>
+    </div>
+{% endblock content %}

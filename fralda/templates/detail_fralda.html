@@ -1,0 +1,104 @@
+{% extends "list_simulacoes.html" %}
+
+{% block title %}Detalhes da fralda{% endblock title %}
+
+{% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'detail_fralda.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="container">
+        <h2>{{ fralda.identificador }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Modelo</td>
+                    <td>{{ fralda.modelo }}</td>
+                </tr>
+                <tr>
+                    <td>Tamanho</td>
+                    <td>{{ fralda.tamanho }}</td>
+                </tr>
+                <tr>
+                    <td>Celulose virgem (Kg)</td>
+                    <td>{{ fralda.qtdCeluloseVirgem }}</td>
+                </tr>
+                <tr>
+                    <td>Gel (Kg)</td>
+                    <td>{{ fralda.qtdGel }}</td>
+                </tr>
+                <tr>
+                    <td>Fita adesiva (m)</td>
+                    <td>{{ fralda.qtdFitaAdesiva }}</td>
+                </tr>
+                <tr>
+                    <td>Elastico (Kg)</td>
+                    <td>{{ fralda.qtdElastico }}</td>
+                </tr>
+                <tr>
+                    <td>Barreira (m2)</td>
+                    <td>{{ fralda.qtdBarreira }}</td>
+                </tr>
+                <tr>
+                <tr>
+                    <td>Polietileno 750 (Kg)</td>
+                    <td>{{ fralda.qtdPolietileno750 }}</td>
+                </tr>
+                <tr>
+                    <td>Polietileno 780 (Kg)</td>
+                    <td>{{ fralda.qtdPolietileno780 }}</td>
+                </tr>
+                <tr>
+                    <td>Hot-Melt (Kg)</td>
+                    <td>{{ fralda.qtdHotMelt }}</td>
+                </tr>
+                <tr>
+                    <td>Quantidade por pacote</td>
+                    <td>{{ fralda.qtdPorPacote }}</td>
+                </tr>
+                <tr>
+                    <td>Perdas (%)</td>
+                    <td>{{ fralda.percentPerdas }}</td>
+                </tr>
+                <tr>
+                    <td>Embalagem (R$)</td>
+                    <td>{{ fralda.precoEmbalagem }}</td>
+                </tr>
+                <tr>
+                    <td>Saco para fardos/Encarte (R$)</td>
+                    <td>{{ fralda.precoFardoEncarte }}</td>
+                </tr>
+                <tr>
+                    <td>Comissão (%)</td>
+                    <td>{{ fralda.percentComissao }}</td>
+                </tr>
+                <tr>
+                    <td>Impostos (%)</td>
+                    <td>{{ fralda.percentImpostos }}</td>
+                </tr>
+                <tr>
+                    <td>Frete (%)</td>
+                    <td>{{ fralda.percentFrete }}</td>
+                </tr>
+                <tr>
+                    <td>Margem de contribuição (%)</td>
+                    <td>{{ fralda.percentMargem }}</td>
+                </tr>
+                <tr>
+                    <td>ST (%)</td>
+                    <td>{{ fralda.percentST }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button type="button" class="btn btn-danger"><a href="{% url 'fralda:delete_fralda' fralda.pk %}">Deletar</a></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
