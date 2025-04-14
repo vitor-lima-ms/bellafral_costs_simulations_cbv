@@ -1,0 +1,40 @@
+
+#register_user_header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    margin-top: 1em;
+    width: fit-content;
+    padding: 0.5em;
+    text-align: center;
+}
+
+form {
+    padding: 1em;
+    margin: 1em;
+    font-size: larger;
+}
+
+.cel-border {
+    border: 2px solid #000;
+}
+
+table {
+    font-weight: bold;
+    text-align: center;
+}
+
+table td {
+    padding: 0.5em;
+}
+
+ul li {
+    text-align: left;
+}
+
+ul li h6 {
+    margin: 0;
+}
