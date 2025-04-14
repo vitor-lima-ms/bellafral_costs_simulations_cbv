@@ -3,11 +3,13 @@ from simulacao.models import Simulacao
 def calcular_custo_unitario_total_por_componente(simulacao: Simulacao):
     simulacao.celuloseVirgemCUT = round(simulacao.custoObj.custoCeluloseVirgem * simulacao.fraldaObj.qtdCeluloseVirgem, 4)
     simulacao.gelCUT = round(simulacao.custoObj.custoGel * simulacao.fraldaObj.qtdGel, 4)
+    simulacao.tnt162CUT = round(simulacao.custoObj.custoTnt162 * simulacao.fraldaObj.qtdTnt162, 4)
     simulacao.tnt750CUT = round(simulacao.custoObj.custoTnt750 * simulacao.fraldaObj.qtdTnt750, 4)
     simulacao.tnt780CUT = round(simulacao.custoObj.custoTnt780 * simulacao.fraldaObj.qtdTnt780, 4)
     simulacao.fitaAdesivaCUT = round(simulacao.custoObj.custoFitaAdesiva * simulacao.fraldaObj.qtdFitaAdesiva, 4)
     simulacao.elasticoCUT = round(simulacao.custoObj.custoElastico * simulacao.fraldaObj.qtdElastico, 4)
     simulacao.barreiraCUT = round(simulacao.custoObj.custoBarreira * simulacao.fraldaObj.qtdBarreira, 4)
+    simulacao.polietileno162CUT = round(simulacao.custoObj.custoPolietileno162 * simulacao.fraldaObj.qtdPolietileno162, 4)
     simulacao.polietileno750CUT = round(simulacao.custoObj.custoPolietileno750 * simulacao.fraldaObj.qtdPolietileno750, 4)
     simulacao.polietileno780CUT = round(simulacao.custoObj.custoPolietileno780 * simulacao.fraldaObj.qtdPolietileno780, 4)
     simulacao.hotMeltCUT = round(simulacao.custoObj.custoHotMelt * simulacao.fraldaObj.qtdHotMelt, 4)
