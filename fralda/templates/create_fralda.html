@@ -1,6 +1,6 @@
 {% extends "list_simulacoes.html" %}
 
-{% block title %}Criar fralda{% endblock title %}
+{% block title %}Criar fralda/ABS{% endblock title %}
 
 {% block css %}
     {% load static %}
@@ -9,7 +9,7 @@
 
 {% block content %}
     <div class="container">
-        <h2>Criar fralda</h2>
+        <h2>Criar fralda/ABS</h2>
         <form action="" method="post">
             {% csrf_token %}
             {{ form.as_table }}
