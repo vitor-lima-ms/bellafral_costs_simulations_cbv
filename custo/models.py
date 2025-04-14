@@ -17,4 +17,4 @@ class Custo(models.Model):
     custoHotMelt = models.DecimalField(verbose_name='Hot-Melt (R$)', max_digits=10, decimal_places=4)
 
     def __str__(self):
-        return f'Custo: {self.identificador}'
+        return f'{self.identificador}'
