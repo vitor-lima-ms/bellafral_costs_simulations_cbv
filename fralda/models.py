@@ -24,11 +24,13 @@ class Fralda(models.Model):
     
     qtdCeluloseVirgem = models.DecimalField(verbose_name='Celulose virgem (Kg)', max_digits=10, decimal_places=4)
     qtdGel = models.DecimalField(verbose_name='Gel (Kg)', max_digits=10, decimal_places=4)
+    qtdTnt162 = models.DecimalField(verbose_name='TNT 162 (m2)', max_digits=10, decimal_places=4, default=0)
     qtdTnt750 = models.DecimalField(verbose_name='TNT 750 (m2)', max_digits=10, decimal_places=4)
     qtdTnt780 = models.DecimalField(verbose_name='TNT 780 (m2)', max_digits=10, decimal_places=4)
     qtdFitaAdesiva = models.DecimalField(verbose_name='Fita adesiva (m)', max_digits=10, decimal_places=4)
     qtdElastico = models.DecimalField(verbose_name='Elastico (Kg)', max_digits=10, decimal_places=4)
     qtdBarreira = models.DecimalField(verbose_name='Barreira (m2)', max_digits=10, decimal_places=4)
+    qtdPolietileno162 = models.DecimalField(verbose_name='Polietileno 162 (Kg)', max_digits=10, decimal_places=4, default=0)
     qtdPolietileno750 = models.DecimalField(verbose_name='Polietileno 750 (Kg)', max_digits=10, decimal_places=4, default=0)
     qtdPolietileno780 = models.DecimalField(verbose_name='Polietileno 780 (Kg)', max_digits=10, decimal_places=4)
     qtdHotMelt = models.DecimalField(verbose_name='Hot-Melt (Kg)', max_digits=10, decimal_places=4)
