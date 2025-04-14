@@ -35,7 +35,6 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'bellafralcustos.com',
     'https://bellafralcustos.com',
 ]
 
