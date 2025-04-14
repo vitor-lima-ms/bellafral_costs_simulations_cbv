@@ -2,10 +2,25 @@ from django.db import models
 
 # Create your models here.
 
+modelo_choices = [
+    ('ABS BELLAFRAL CONFORT', 'ABS BELLAFRAL CONFORT'),
+    ('ABS BELLAFRAL BASIC', 'ABS BELLAFRAL BASIC'),
+    ('ABS BIG CONFORT', 'ABS BIG CONFORT'),
+    ('FRALDA BELLAFRAL CONFORT', 'FRALDA BELLAFRAL CONFORT'),
+    ('FRALDA BELLAFRAL BASIC', 'FRALDA BELLAFRAL BASIC'),
+    ('FRALDA BIG CONFORT', 'FRALDA BIG CONFORT'),
+]
+
+tamanho_choices = [
+    ('XG', 'XG'),
+    ('G', 'G'),
+    ('M', 'M'),
+]
+
 class Fralda(models.Model):
-    modelo = models.CharField(verbose_name='Modelo', max_length=100)
+    modelo = models.CharField(verbose_name='Modelo', max_length=100, choices=modelo_choices)
     identificador = models.CharField(verbose_name='Identificador', max_length=100)
-    tamanho = models.CharField(verbose_name='Tamanho', max_length=100)
+    tamanho = models.CharField(verbose_name='Tamanho', max_length=100, choices=tamanho_choices)
     
     qtdCeluloseVirgem = models.DecimalField(verbose_name='Celulose virgem (Kg)', max_digits=10, decimal_places=4)
     qtdGel = models.DecimalField(verbose_name='Gel (Kg)', max_digits=10, decimal_places=4)
@@ -31,4 +46,4 @@ class Fralda(models.Model):
     percentST = models.DecimalField(verbose_name='ST (%)', max_digits=10, decimal_places=4)
 
     def __str__(self):
-        return f'Fralda: {self.modelo} {self.identificador} ({self.tamanho})'
+        return f'{self.modelo} {self.identificador} ({self.tamanho})'
