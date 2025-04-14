@@ -11,11 +11,13 @@ class Simulacao(models.Model):
 
     celuloseVirgemCUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     gelCUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
+    tnt162CUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     tnt750CUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     tnt780CUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     fitaAdesivaCUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     elasticoCUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     barreiraCUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
+    polietileno162CUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     polietileno750CUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     polietileno780CUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
     hotMeltCUT = models.DecimalField(max_digits=10, decimal_places=4, default=0, blank=True)
