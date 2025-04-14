@@ -68,7 +68,7 @@
         {% else %}
             {% for simulacao in simulacoes %}
                 <div class="container">
-                    <h3><b>{{ simulacao.fraldaObj.modelo }} - {{ simulacao.custoObj.identificador }}</b></h3>
+                    <h3><b>{{ simulacao.fraldaObj.modelo }} {{ simulacao.custoObj.identificador }} ({{ simulacao.fraldaObj.tamanho }})</b></h3>
                 <table>
                     <thead>
                     <tr>
@@ -90,6 +90,12 @@
                         <td>{{ simulacao.fraldaObj.qtdGel }}</td>
                         <td>R$ {{ simulacao.custoObj.custoGel }}</td>
                         <td>R$ {{ simulacao.gelCUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>TNT 162 (m2)</td>
+                        <td>{{ simulacao.fraldaObj.qtdTnt162 }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoTnt162 }}</td>
+                        <td>R$ {{ simulacao.tnt162CUT }}</td>
                     </tr>
                     <tr>
                         <td>TNT 750 (m2)</td>
@@ -120,6 +126,12 @@
                         <td>{{ simulacao.fraldaObj.qtdBarreira }}</td>
                         <td>R$ {{ simulacao.custoObj.custoBarreira }}</td>
                         <td>R$ {{ simulacao.barreiraCUT }}</td>
+                    </tr>
+                    <tr>
+                        <td>Polietileno 162 (Kg)</td>
+                        <td>{{ simulacao.fraldaObj.qtdPolietileno162 }}</td>
+                        <td>R$ {{ simulacao.custoObj.custoPolietileno162 }}</td>
+                        <td>R$ {{ simulacao.polietileno162CUT }}</td>
                     </tr>
                     <tr>
                         <td>Polietileno 750 (Kg)</td>
