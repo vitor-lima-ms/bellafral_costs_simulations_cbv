@@ -9,11 +9,13 @@
 
 {% block content %}
     <div class="container">
-        {% for custo in custos %}
-            <h2>{{ custo.identificador }}</h2>
-            <button type="button" class="btn btn-danger"><a href="{% url 'custo:delete_custo' custo.pk %}">Deletar</a></button>
-            <button type="button" class="btn btn-dark"><a href="{% url 'custo:update_custo' custo.pk %}">Atualizar</a></button>
-            <button type="button" class="btn btn-secondary"><a href="{% url 'custo:detail_custo' custo.pk %}">Detalhes</a></button>
-        {% endfor %}
+        <table class="table">
+            {% for custo in custos %}
+                <td><h2>{{ custo.identificador }}</h2></td>
+                <td><button type="button" class="btn btn-danger"><a href="{% url 'custo:delete_custo' custo.pk %}">Deletar</a></button></td>
+                <td><button type="button" class="btn btn-dark"><a href="{% url 'custo:update_custo' custo.pk %}">Atualizar</a></button></td>
+                <td><button type="button" class="btn btn-secondary"><a href="{% url 'custo:detail_custo' custo.pk %}">Detalhes</a></button></td>
+            {% endfor %}
+        </table>
     </div>
 {% endblock content %}
