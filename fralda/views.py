@@ -29,9 +29,9 @@ class UpdateFralda(UpdateView):
     model = Fralda
     fields = '__all__'
     template_name = 'update_fralda.html'
-    success_url = reverse_lazy('simulacao:index')
+    success_url = reverse_lazy('fralda:list_fraldas')
 
 class DeleteFralda(DeleteView):
     model = Fralda
     template_name = 'delete_fralda.html'
-    success_url = reverse_lazy('simulacao:index')
+    success_url = reverse_lazy('fralda:list_fraldas')

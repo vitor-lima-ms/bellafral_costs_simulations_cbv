@@ -15,6 +15,7 @@ tamanho_choices = [
     ('XG', 'XG'),
     ('G', 'G'),
     ('M', 'M'),
+    ('TAMANHO ÚNICO', 'TAMANHO ÚNICO'),
 ]
 
 class Fralda(models.Model):

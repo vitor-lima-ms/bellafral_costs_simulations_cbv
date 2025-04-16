@@ -10,7 +10,7 @@
 {% block content %}
     <div class="container">
         <h2>{{ fralda.modelo }} - {{ fralda.tamanho }}</h2>
-        <table>
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>Item</th>
@@ -102,7 +102,7 @@
                     <td>Frete (%)</td>
                     <td>{{ fralda.percentFrete }}</td>
                 </tr>
-                <tr>
+                <tr class="table-danger">
                     <td>Margem de contribuição (%)</td>
                     <td>{{ fralda.percentMargem }}</td>
                 </tr>

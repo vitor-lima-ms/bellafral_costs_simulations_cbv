@@ -69,7 +69,7 @@
             {% for simulacao in simulacoes %}
                 <div class="container">
                     <h3><b>{{ simulacao.fraldaObj.modelo }} {{ simulacao.custoObj.identificador }} ({{ simulacao.fraldaObj.tamanho }})</b></h3>
-                <table>
+                <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>Item</th>
@@ -195,7 +195,7 @@
                         <td colspan="3">Frete (%)</td>
                         <td>{{ simulacao.fraldaObj.percentFrete }}</td>
                     </tr>
-                    <tr>
+                    <tr class="table-danger">
                         <td colspan="3">Margem de contribuição (%)</td>
                         <td>{{ simulacao.fraldaObj.percentMargem }}</td>
                     </tr>
