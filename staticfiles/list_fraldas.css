@@ -1,12 +1,12 @@
 
 .container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
-h2 {
+h4 {
     margin-top: 1em;
 }
 
@@ -16,9 +16,9 @@ a {
 }
 
 .btn {
-    margin-top: 0.5em;
+    margin-top: 1em;
 }
 
-.btn-secondary {
-    margin-bottom: 2em;
+.btn-danger {
+    margin-left: 0.75em;
 }
