@@ -68,7 +68,7 @@
         {% else %}
             {% for simulacao in simulacoes %}
                 <div class="container">
-                    <h3><b>{{ simulacao.fraldaObj.modelo }} {{ simulacao.custoObj.identificador }} ({{ simulacao.fraldaObj.tamanho }})</b></h3>
+                    <h4><b>Fralda: {{ simulacao.fraldaObj.modelo }} ({{ simulacao.fraldaObj.tamanho }}) / Custo: {{ simulacao.custoObj.identificador }}</b></h4>
                 <table class="table table-striped">
                     <thead>
                     <tr>
