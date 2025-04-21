@@ -22,18 +22,6 @@ class CreateSimulacao(CreateView):
 class ListSimulacao(View):
     def get(self, request):
         simulacoes = Simulacao.objects.all()
-
-        for simulacao in simulacoes:
-            functions.calcular_custo_unitario_total_por_componente(simulacao)
-            functions.calcular_custo_total_sem_perdas(simulacao)
-            functions.calcular_custo_total_com_perdas(simulacao)
-            functions.calcular_custo_pacote(simulacao)
-            functions.calcular_custo_unitario_final(simulacao)
-            functions.calcular_preco_venda(simulacao)
-            functions.calcular_preco_venda_unitario(simulacao)
-            functions.calcular_preco_venda_st(simulacao)
-            functions.calcular_preco_venda_unitario_st(simulacao)
-
         return render(request, 'list_simulacoes.html', {'simulacoes': simulacoes})
     
 class DeleteSimulacao(DeleteView):

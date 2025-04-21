@@ -1,7 +1,10 @@
 from django.db import models
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 from custo.models import Custo
 from fralda.models import Fralda
+from simulacao import functions
 
 # Create your models here.
 
@@ -34,3 +37,39 @@ class Simulacao(models.Model):
 
     def __str__(self):
         return f'{self.fraldaObj.modelo} - {self.custoObj.identificador}'
+
+@receiver(post_save, sender=Fralda)
+def calculations(sender, **kwargs):
+    print('Entrei no signal')
+    print(sender)
+    print(kwargs)
+    simulacoes = Simulacao.objects.all()
+
+    for simulacao in simulacoes:
+        functions.calcular_custo_unitario_total_por_componente(simulacao)
+        functions.calcular_custo_total_sem_perdas(simulacao)
+        functions.calcular_custo_total_com_perdas(simulacao)
+        functions.calcular_custo_pacote(simulacao)
+        functions.calcular_custo_unitario_final(simulacao)
+        functions.calcular_preco_venda(simulacao)
+        functions.calcular_preco_venda_unitario(simulacao)
+        functions.calcular_preco_venda_st(simulacao)
+        functions.calcular_preco_venda_unitario_st(simulacao)
+
+@receiver(post_save, sender=Custo)
+def calculations(sender, **kwargs):
+    print('Entrei no signal')
+    print(sender)
+    print(kwargs)
+    simulacoes = Simulacao.objects.all()
+
+    for simulacao in simulacoes:
+        functions.calcular_custo_unitario_total_por_componente(simulacao)
+        functions.calcular_custo_total_sem_perdas(simulacao)
+        functions.calcular_custo_total_com_perdas(simulacao)
+        functions.calcular_custo_pacote(simulacao)
+        functions.calcular_custo_unitario_final(simulacao)
+        functions.calcular_preco_venda(simulacao)
+        functions.calcular_preco_venda_unitario(simulacao)
+        functions.calcular_preco_venda_st(simulacao)
+        functions.calcular_preco_venda_unitario_st(simulacao)

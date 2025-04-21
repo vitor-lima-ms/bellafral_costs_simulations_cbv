@@ -1,6 +1,4 @@
-from simulacao.models import Simulacao
-
-def calcular_custo_unitario_total_por_componente(simulacao: Simulacao):
+def calcular_custo_unitario_total_por_componente(simulacao):
     simulacao.celuloseVirgemCUT = round(simulacao.custoObj.custoCeluloseVirgem * simulacao.fraldaObj.qtdCeluloseVirgem, 4)
     simulacao.gelCUT = round(simulacao.custoObj.custoGel * simulacao.fraldaObj.qtdGel, 4)
     simulacao.tnt162CUT = round(simulacao.custoObj.custoTnt162 * simulacao.fraldaObj.qtdTnt162, 4)
@@ -18,56 +16,56 @@ def calcular_custo_unitario_total_por_componente(simulacao: Simulacao):
     
     return simulacao
 
-def calcular_custo_total_sem_perdas(simulacao: Simulacao):
+def calcular_custo_total_sem_perdas(simulacao):
     simulacao.fraldaCustoTotalSemPerdas = round(simulacao.celuloseVirgemCUT + simulacao.gelCUT + simulacao.tnt750CUT + simulacao.tnt780CUT + simulacao.fitaAdesivaCUT + simulacao.elasticoCUT + simulacao.barreiraCUT + simulacao.polietileno750CUT + simulacao.polietileno780CUT + simulacao.hotMeltCUT, 4)
     
     simulacao.save()
     
     return simulacao
 
-def calcular_custo_total_com_perdas(simulacao: Simulacao):
+def calcular_custo_total_com_perdas(simulacao):
     simulacao.fraldaCustoTotalComPerdas = round(simulacao.fraldaCustoTotalSemPerdas * (1 + simulacao.fraldaObj.percentPerdas / 100), 4)
     
     simulacao.save()
     
     return simulacao
 
-def calcular_custo_pacote(simulacao: Simulacao):
+def calcular_custo_pacote(simulacao):
     simulacao.fraldaCustoPacote = round((simulacao.fraldaCustoTotalComPerdas * simulacao.fraldaObj.qtdPorPacote) + simulacao.fraldaObj.precoEmbalagem + simulacao.fraldaObj.precoFardoEncarte, 4)
     
     simulacao.save()
     
     return simulacao
 
-def calcular_custo_unitario_final(simulacao: Simulacao):
+def calcular_custo_unitario_final(simulacao):
     simulacao.fraldaCUF = round(simulacao.fraldaCustoPacote / simulacao.fraldaObj.qtdPorPacote, 4)
     
     simulacao.save()
     
     return simulacao
 
-def calcular_preco_venda(simulacao: Simulacao):
+def calcular_preco_venda(simulacao):
     simulacao.precoVenda = round(simulacao.fraldaCustoPacote / ((100 - simulacao.fraldaObj.percentComissao - simulacao.fraldaObj.percentImpostos - simulacao.fraldaObj.percentFrete - simulacao.fraldaObj.percentMargem) / 100), 4)
     
     simulacao.save()
     
     return simulacao
 
-def calcular_preco_venda_unitario(simulacao: Simulacao):
+def calcular_preco_venda_unitario(simulacao):
     simulacao.precoVendaUnitario = round(simulacao.precoVenda / simulacao.fraldaObj.qtdPorPacote, 4)
     
     simulacao.save()
     
     return simulacao
     
-def calcular_preco_venda_st(simulacao: Simulacao):
+def calcular_preco_venda_st(simulacao):
     simulacao.precoVendaST = round(simulacao.precoVenda * (1 + simulacao.fraldaObj.percentST / 100), 4)
     
     simulacao.save()
     
     return simulacao
 
-def calcular_preco_venda_unitario_st(simulacao: Simulacao):
+def calcular_preco_venda_unitario_st(simulacao):
     simulacao.precoVendaUnitarioST = round(simulacao.precoVendaST / simulacao.fraldaObj.qtdPorPacote, 4)
     
     simulacao.save()

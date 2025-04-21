@@ -1,3 +1,4 @@
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import CreateView
 from django.views.generic import ListView
 from django.views.generic import UpdateView
@@ -6,6 +7,7 @@ from django.views.generic import DetailView
 from django.urls import reverse_lazy
 
 from fralda.models import Fralda
+from fralda.myForms import FraldaUpdateForm
 
 # Create your views here.
 
