@@ -40,9 +40,6 @@ class Simulacao(models.Model):
 
 @receiver(post_save, sender=Fralda)
 def calculations(sender, **kwargs):
-    print('Entrei no signal')
-    print(sender)
-    print(kwargs)
     simulacoes = Simulacao.objects.all()
 
     for simulacao in simulacoes:
@@ -58,9 +55,6 @@ def calculations(sender, **kwargs):
 
 @receiver(post_save, sender=Custo)
 def calculations(sender, **kwargs):
-    print('Entrei no signal')
-    print(sender)
-    print(kwargs)
     simulacoes = Simulacao.objects.all()
 
     for simulacao in simulacoes:
